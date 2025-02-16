@@ -11,16 +11,70 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #3b3b58, #1c1c2f);
+            color: #ffffff;
             text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            animation: fadeIn 1s ease-in-out;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        a {
+            color: #61dafb;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #21a1f1;
+            text-decoration: underline;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .countdown {
+            font-size: 2em;
+            font-weight: bold;
+            color: #61dafb;
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1>Redirecting you to Computer Geek Games...</h1>
+    <div class="container">
+        <h1>Redirecting to Computer Geek Games...</h1>
+        <p>You will be redirected in <span id="countdown" class="countdown">5</span> seconds.</p>
         <p>If you are not redirected automatically, <a href="https://computergeekgames.itch.io/">click here</a>.</p>
     </div>
+
+    <script>
+        // Countdown timer for redirect
+        let countdownElement = document.getElementById('countdown');
+        let timeLeft = 5;
+
+        const countdown = setInterval(() => {
+            timeLeft -= 1;
+            countdownElement.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
